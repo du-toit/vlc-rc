@@ -35,7 +35,7 @@ bash test.sh
 * It runs the doc tests, and then every unit test **individually**.
 * After running the tests, the script then terminates VLC.
 
-### Why its needed
+### Why it's needed
 
 Besides starting up VLC for us so we don't have to, the script runs each unit test individually.
 
