@@ -1,0 +1,8 @@
+# Editors and editor config.
+.vscode
+.idea
+
+# Cargo and build artifacts.
+/target
+/Cargo.lock
+**/*.rs.bk

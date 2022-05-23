@@ -1,0 +1,25 @@
+[package]
+name = "vlc-rc"
+version = "0.1.0"
+
+authors = [
+    "Rick <rickz75dev@gmail.com>",
+    "Halfnelson <ewoudvanrooyen@gmail.com>",
+]
+description = "A library used to interact with a VLC player's TCP interface."
+
+categories = ["network-programming", "API bindings"]
+keywords = ["networking", "vlc", "media", "utility", "cross-platform"]
+
+homepage = "https://github.com/Rickz75/vlc-rc"
+repository = "https://github.com/Rickz75/vlc-rc"
+
+license = "MIT"
+edition = "2021"
+publish = true
+
+exclude = ["samples/audio.mp3"]
+
+[dependencies]
+regex = "1.5.5"
+lazy_static = "1.4.0"
