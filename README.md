@@ -46,8 +46,8 @@ You can enable it via the GUI and it will run each time you start VLC.
 Add the library as a dependency to [Cargo.toml](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html):
 
 ```toml
-[dependencies.vlc-rc]
-git = "https://github.com/Rickz75/vlc-rc.git"
+[dependencies]
+vlc-rc = "0.1.0
 ```
 
 ### Example
