@@ -203,10 +203,13 @@ impl Client {
     /// assert_eq!(player.is_playing().unwrap(), true);
     /// ```
     pub fn play(&mut self) -> Result<()> {
-        // Spam the interface until we get the desired output.
-        while !self.is_playing()? {
-            writeln!(self.socket, "play")?;
-            self.socket.flush()?;
+        // Only issue the 'play' command if the playlist is not empty.
+        if !self.playlist()?.is_empty() {
+            // Spam the interface until we get the desired output.
+            while !self.is_playing()? {
+                writeln!(self.socket, "play")?;
+                self.socket.flush()?;
+            }
         }
         Ok(())
     }
