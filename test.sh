@@ -12,7 +12,7 @@ test() {
 }
 
 # Start VLC without a GUI and play the audio sample - piping away all VLC's output.
-cvlc --rc-host $ADDR $SAMPLE &> /dev/null &
+cvlc --rc-host $TEST_ADDR $SAMPLE &> /dev/null &
 
 wait &
 
