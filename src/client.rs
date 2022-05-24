@@ -126,7 +126,13 @@ impl Client {
         let mut line = String::new();
         self.socket.read_line(&mut line)?;
 
-        Ok(u8::try_from(line.trim().parse::<u16>()?).unwrap_or(MAX_VOLUME))
+        let volume = line.trim().parse::<u16>()?;
+
+        if volume <= (MAX_VOLUME as u16) {
+            Ok(volume as u8)
+        } else {
+            Ok(MAX_VOLUME)
+        }
     }
 
     /// Sets the VLC player's volume to the given amount.
