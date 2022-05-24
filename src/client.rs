@@ -126,7 +126,13 @@ impl Client {
         let mut line = String::new();
         self.socket.read_line(&mut line)?;
 
-        Ok(u8::try_from(line.trim().parse::<u16>()?).unwrap_or(MAX_VOLUME))
+        let volume = line.trim().parse::<u16>()?;
+
+        if volume <= (MAX_VOLUME as u16) {
+            Ok(volume as u8)
+        } else {
+            Ok(MAX_VOLUME)
+        }
     }
 
     /// Sets the VLC player's volume to the given amount.
@@ -197,10 +203,13 @@ impl Client {
     /// assert_eq!(player.is_playing().unwrap(), true);
     /// ```
     pub fn play(&mut self) -> Result<()> {
-        // Spam the interface until we get the desired output.
-        while !self.is_playing()? {
-            writeln!(self.socket, "play")?;
-            self.socket.flush()?;
+        // Only issue the 'play' command if the playlist is not empty.
+        if !self.playlist()?.is_empty() {
+            // Spam the interface until we get the desired output.
+            while !self.is_playing()? {
+                writeln!(self.socket, "play")?;
+                self.socket.flush()?;
+            }
         }
         Ok(())
     }
@@ -435,11 +444,11 @@ mod test {
     fn play_and_stop() -> Result<()> {
         let mut client = connect()?;
 
-        client.stop()?;
-        assert_eq!(client.is_playing()?, false);
-
         client.play()?;
         assert_eq!(client.is_playing()?, true);
+
+        client.stop()?;
+        assert_eq!(client.is_playing()?, false);
 
         Ok(())
     }

@@ -47,7 +47,7 @@ Add the library as a dependency to [Cargo.toml](https://doc.rust-lang.org/cargo/
 
 ```toml
 [dependencies]
-vlc-rc = "0.1.0
+vlc-rc = "0.1.1
 ```
 
 ### Example
