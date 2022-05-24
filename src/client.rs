@@ -444,11 +444,11 @@ mod test {
     fn play_and_stop() -> Result<()> {
         let mut client = connect()?;
 
-        client.stop()?;
-        assert_eq!(client.is_playing()?, false);
-
         client.play()?;
         assert_eq!(client.is_playing()?, true);
+
+        client.stop()?;
+        assert_eq!(client.is_playing()?, false);
 
         Ok(())
     }
