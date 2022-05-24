@@ -1,6 +1,6 @@
 [package]
 name = "vlc-rc"
-version = "0.1.0"
+version = "0.1.1"
 
 authors = [
     "Rick <rickz75dev@gmail.com>",
