@@ -281,6 +281,25 @@ impl Client {
         Ok(line.trim().parse().ok())
     }
 
+    /// Moves the track's playback to the given position (in seconds).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use vlc_rc::Client;
+    ///
+    /// let mut player = Client::connect("127.0.0.1:9090").unwrap();
+    ///
+    /// // Move playback to the 60 seconds position
+    /// player.seek(60).unwrap()
+    /// ```
+    pub fn seek(&mut self, secs: u32) -> Result<()> {
+        writeln!(self.socket, "seek {}", secs)?;
+        self.socket.flush()?;
+
+        Ok(())
+    }
+
     /// Moves the track's playback forward by the given amount (in seconds).
     ///
     /// # Examples
