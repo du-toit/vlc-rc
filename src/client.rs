@@ -473,6 +473,29 @@ mod test {
     }
 
     #[test]
+    fn seek() -> Result<()> {
+        let mut client = connect()?;
+
+        client.pause()?;
+
+        client.seek(1)?;
+        let first = match client.get_time()? {
+            Some(t) => t,
+            _ => return Ok(()),
+        };
+        assert_eq!(first, 0);
+
+        client.seek(5)?;
+        let second = match client.get_time()? {
+            Some(t) => t,
+            _ => return Ok(()),
+        };
+        assert_eq!(second, 3);
+
+        Ok(())
+    }
+
+    #[test]
     fn forward() -> Result<()> {
         let mut client = connect()?;
 
