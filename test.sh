@@ -28,6 +28,7 @@ test "subtitle_from_parts_some";
 # Run the client tests.
 test "get_and_set_volume";
 test "play_and_stop";
+test "seek"
 test "forward";
 test "rewind";
 
