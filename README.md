@@ -8,7 +8,7 @@
 
 This is a (WIP) rust library you can use to interact with [VLC](https://www.videolan.org/vlc) programmatically by using its built-in [TCP interface](https://wiki.videolan.org/Documentation:Advanced_Use_of_VLC/#RC_and_RTCI).
 
-VLC's TCP interface is not well documented, and is *very* unpredictable at times, making it exceedingly hard to test in a deterministic matter. Regardless, the library aims to be as **stable** and **testable** as possible!
+VLC's TCP interface is not well documented, and is *very* unpredictable at times, making it exceedingly hard to test in a deterministic manner. Regardless, the library aims to be as **stable** and **testable** as possible!
 
 ## Requirements
 
